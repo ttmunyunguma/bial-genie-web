@@ -12,9 +12,10 @@ import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
-import {AuthState} from "./login/auth.state";
+import {AuthState} from "./store/auth.state";
 import {ReactiveFormsModule} from "@angular/forms";
 import {environment} from "../environments/environment";
+import {AuthGuard} from "./login/auth.guard";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {environment} from "../environments/environment";
     MatIconModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

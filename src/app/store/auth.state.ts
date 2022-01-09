@@ -2,7 +2,7 @@ import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {Injectable} from "@angular/core";
 import {Login, Logout} from "./auth.actions";
 import {tap} from "rxjs/operators";
-import {AuthService} from "./auth.service";
+import {AuthService} from "../login/auth.service";
 
 export interface AuthStateModel {
   token: string | null;
@@ -18,6 +18,7 @@ export interface AuthStateModel {
 })
 @Injectable()
 export class AuthState {
+
   @Selector()
   static token(state: AuthStateModel): string | null {
     return state.token;
@@ -33,11 +34,11 @@ export class AuthState {
 
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>, action: Login) {
-    return this.authService.login(action.payload).pipe(
+    return this.authService.login(action.user).pipe(
       tap((result: { token: string }) => {
         ctx.patchState({
           token: result.token,
-          username: action.payload.username
+          username: action.user.username
         });
       })
     );

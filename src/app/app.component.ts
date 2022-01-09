@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Actions, ofActionDispatched} from "@ngxs/store";
 import {Router} from "@angular/router";
-import {Logout} from "./login/auth.actions";
+import {Logout} from "./store/auth.actions";
 
 @Component({
   selector: 'app-root',

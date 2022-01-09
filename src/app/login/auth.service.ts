@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../models/user";
+import {IUser} from "../models/IUser";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -8,11 +8,11 @@ import {Observable} from "rxjs";
 })
 export class AuthService {
 
-  baseUrl = 'http://127.0.0.1:8000/api/v1/accounts/';
+  baseUrl = 'http://127.0.0.1:8000/api/v1/accounts';
 
   constructor(private http: HttpClient) { }
 
-  login(user: User): Observable<any> {
+  login(user: IUser): Observable<any> {
     return this.http.post(`${this.baseUrl}/login/`, user);
   }
 
